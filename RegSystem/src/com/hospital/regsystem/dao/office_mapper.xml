@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IOfficeDao">
+	<!-- 查询所有用户信息 -->
+	 <resultMap type="office" id="o">
+		<id column="oid" javaType="_int" property="oid"/>
+		<result column="oname" javaType="string" property="oname"/>
+		<result column="odesc" javaType="string" property="odesc"/>
+			
+	</resultMap> 
+	<select id="selectOfficeById" resultMap="o">
+		select * from office where oid=#{oid}
+	</select>
+	<select id="selectOfficeByOname" resultMap="o">
+		select * from office where oname=#{oname}
+	</select>
+	<select id="selectAll" resultMap="o">
+		select * from office 
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IOfficelistDao">
+	 <resultMap type="officelist" id="list">
+		<id column="vid" javaType="_int" property="vid"/>
+		<result column="oid" javaType="_int" property="oid"/>
+		<result column="role" javaType="_int" property="role"/>
+		<result column="did" javaType="_int" property="did"/>
+		<result column="desc" javaType="string" property="desc"/>
+		<result column="state" javaType="_int" property="state"/>
+		<result column="regtime" javaType="string" property="regtime"/>
+		<result column="canceltime" javaType="string" property="canceltime"/>
+		<result column="finshtime" javaType="string" property="finshtime"/>
+		<result column="result" javaType="string" property="result"/>
+		<result column="runstarttime" javaType="string" property="runstarttime"/>
+		<result column="runendtime" javaType="string" property="runendtime"/>
+	</resultMap> 
+	<select id="select" resultMap="list">
+		select * from officelist where oid=#{oid} and starttime=#{starttime} and endtime=#{endtime}
+	</select>
+	 
+	 <!-- 获取当日上午的可挂号人数 -->
+	<select id="selectOfficeCanRegAM" resultType="java.lang.Integer">
+		select IFNULL(sum(a.canregis),999)from (select v.canregis,v.starttime from officelist v where v.oid= #{officeId} and unix_timestamp(v.starttime)>=unix_timestamp(#{date1}) and unix_timestamp(#{date2})>=unix_timestamp(v.endtime)) a
+	</select>
+	<!-- 获取当日下午的可挂号人数 -->
+	<select id="selectOfficeCanRegPM" resultType="java.lang.Integer">
+		select IFNULL(sum(a.canregis),999)from (select v.canregis,v.starttime from officelist v where v.oid= #{officeId} and unix_timestamp(v.starttime)>=unix_timestamp(#{date1}) and unix_timestamp(#{date2})>=unix_timestamp(v.endtime)) a
+	</select>
+	<!-- 获取当日上午的可挂号人数 -->
+	<select id="selectOfficeCanRegAMByDname" resultType="java.lang.Integer">
+		select IFNULL(sum(a.canregis),999)from (select v.canregis,v.starttime from officelist v where v.oid= #{oid} and v.did=#{did} and unix_timestamp(v.starttime)>=unix_timestamp(#{string}) and unix_timestamp(#{string2})>=unix_timestamp(v.endtime)) a
+	</select>
+	<!-- 获取当日下午的可挂号人数 -->
+	<select id="selectOfficeCanRegPMByDname" resultType="java.lang.Integer">
+		select IFNULL(sum(a.canregis),999)from (select v.canregis,v.starttime from officelist v where v.oid= #{oid} and v.did=#{did} and unix_timestamp(v.starttime)>=unix_timestamp(#{string}) and unix_timestamp(#{string2})>=unix_timestamp(v.endtime)) a
+	</select>
+	
+	<!-- 更新挂号人数 -->
+	<update id="update" parameterType="officelist">
+		update officelist set nowregis=nowregis+1,canregis =canregis-1 where oid =#{oid} and starttime= #{starttime} 
+	</update>
+	
+</mapper>

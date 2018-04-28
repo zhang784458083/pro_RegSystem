@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.INoticeDao">
+	<!-- 查询所有用户信息 -->
+	 <resultMap type="notice" id="n">
+		<id column="pid" javaType="_int" property="nid"/>
+		<result column="title" javaType="string" property="title"/>
+		<result column="date" javaType="string" property="date"/>
+		<result column="auther" javaType="string" property="auther"/>
+		<result column="content" javaType="string" property="content"/>
+		
+	</resultMap> 
+	<select id="selectAll" resultMap="n">
+		select * from notice order by date desc limit 4
+	</select>
+	
+</mapper>
