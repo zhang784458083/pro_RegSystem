@@ -21,7 +21,7 @@ import com.hospital.regsystem.utils.IPUtils;
 
 @Controller
 public class PayBackController {
-	private Logger logger = Logger.getLogger(PatientController.class);
+	private Logger logger = Logger.getLogger(PayBackController.class);
 	@Resource(name="patientService")
 	private IPatientService patientService;
 	@RequestMapping("/back")
