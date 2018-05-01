@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sxlvyou.dao.IProductDao">
+	<!-- 查询所有用户信息 -->
+	 <resultMap type="product" id="p">
+		<id column="id" javaType="_int" property="id"/>
+		<result column="type" javaType="string" property="type"/>
+		<result column="title" javaType="string" property="title"/>
+		<result column="content" javaType="string" property="content"/>
+		<result column="img" javaType="string" property="img"/>
+		<result column="auther" javaType="string" property="auther"/>
+		<result column="date" javaType="string" property="date"/>	
+		
+	</resultMap> 
+	<select id="selectByType" resultMap="p">
+		select * from product where type=#{type} 
+	</select>
+	 <select id="selectAll" resultMap="p">
+		select * from product 
+	</select>
+	<select id="selectOne" resultMap="p">
+		select * from product where id=#{id}
+	</select>
+	<delete id="delete">
+		delete from product where id=#{id}
+	</delete>
+	<insert id="add" parameterType="product">
+		insert into product(type,title,content,img,auther,date) values(#{type},#{title},#{content},#{img},#{string},now())
+	</insert>
+	<!--<select id="selectByDname" resultMap="d">
+		select * from doctor where dname=#{dname} and oid=#{oid}
+	</select> -->
+	
+	
+</mapper>
