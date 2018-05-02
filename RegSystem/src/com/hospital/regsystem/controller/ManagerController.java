@@ -20,15 +20,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hospital.regsystem.pojo.Doctor;
 import com.hospital.regsystem.pojo.Office;
+import com.hospital.regsystem.pojo.Order;
 import com.hospital.regsystem.pojo.Patient;
 import com.hospital.regsystem.service.IDoctorService;
 import com.hospital.regsystem.service.IOfficeService;
+import com.hospital.regsystem.service.IOrderService;
 import com.hospital.regsystem.service.IPatientService;
 import com.hospital.regsystem.utils.IPUtils;
 import com.sun.crypto.provider.DESKeyFactory;
 
 @Controller
 public class ManagerController {
+	@Resource(name="orderService")
+	private IOrderService orderService;
 	@Resource(name="patientService")
 	private IPatientService patientService;
 	@Resource(name="doctorService")
@@ -122,5 +126,13 @@ public class ManagerController {
 		List<Office> list = officeService.selectAll();
 		request.setAttribute("list", list);
 		return "office-list";
+	}
+	
+	// 查看所有科室信息
+	@RequestMapping("/order-list")
+	public String findOrder(HttpServletRequest request) {
+		List<Order> list = orderService.selectAll();
+		request.setAttribute("list", list);
+		return "order-list";
 	}
 }
