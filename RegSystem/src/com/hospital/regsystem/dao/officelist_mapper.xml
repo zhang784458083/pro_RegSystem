@@ -42,5 +42,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="update" parameterType="officelist">
 		update officelist set nowregis=nowregis+1,canregis =canregis-1 where oid =#{oid} and starttime= #{starttime} 
 	</update>
-	
+	<update id="updateByVid" parameterType="officelist">
+		update officelist set starttime= #{starttime},endtime=#{endtime} ,maxregis=#{maxregis},canregis=#{canregis} where vid=#{vid}
+	</update>
+	<insert id="addVit" >
+		insert into officelist (oid,role,did,starttime,endtime,nowregis,maxregis,canregis) values (#{oid},#{role},#{did},#{starttime},#{endtime},0,#{max},#{max})
+	</insert>
 </mapper>

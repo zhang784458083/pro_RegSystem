@@ -52,7 +52,7 @@
           <input id="code" class="input-text size-L" type="text" placeholder="验证码" name="checkCode"  onclick="if(this.value=='验证码:'){this.value='';}" value="" style="width:150px;">
           <img src="${pageContext.request.contextPath}/codeServlet" id="newcode"> <a id="kanbuq" href="javascript:;" >看不清，换一张</a> </div>
       </div>
-      <div class="row cl">
+     <%--  <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <label for="online">
             <input type="checkbox" name="autoLogin" value="1" > 自动登录
@@ -61,7 +61,7 @@
              <input type="checkbox" name="rememberme" value="1" ${not empty cookie.remembermeCookie ? "checked='checked'" : " "}> 记住用户名
           </label>
         </div>
-      </div>
+      </div> --%>
       <div class="row cl">
         <div class="formControls col-xs-8 col-xs-offset-3">
           <input id="submit" name="" onclick="" type="submit" class="btn btn-success radius size-L" value="&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

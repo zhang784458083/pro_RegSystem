@@ -11,4 +11,6 @@ import com.hospital.regsystem.pojo.Notice;
 
 public interface INoticeService {
 	public List<Notice> selectAll();
+	public void add(String title, String content, String author);
+	public List<Notice> select();
 }

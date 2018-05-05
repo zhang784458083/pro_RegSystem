@@ -5,11 +5,8 @@
  */
 package com.hospital.regsystem.service.imp;
 
-import java.util.Date;
-
 import javax.annotation.Resource;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.hospital.regsystem.dao.IOfficelistDao;
@@ -59,6 +56,18 @@ public class OfficelistServiceImpl implements IOfficelistService{
 	@Override
 	public int selectOfficeCanRegPMByDname(int oid, int did, String string, String string2) {
 		return officelistDao.selectOfficeCanRegPMByDname(oid,did,string,string2);
+	}
+
+	@Override
+	public void updateByVid(int vid, String starttime, String endtime, int canregis, int maxregis) {
+		officelistDao.updateByVid(vid, starttime, endtime, canregis, maxregis);
+		
+		
+	}
+
+	@Override
+	public void add(int oid, int role, int did, String starttime, String endtime, int i, String max, String max2) {
+		officelistDao.addVit(oid,role,did,starttime,endtime,i,max,max2);
 	}
 
 	

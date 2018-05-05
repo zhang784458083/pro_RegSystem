@@ -31,7 +31,7 @@
 <body>
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" >社区<font size="4">&nbsp;e&nbsp;</font>院挂号监测平台&nbsp;(管理员端)</a> <!-- <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>  -->
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" >社区<font size="4">&nbsp;e&nbsp;</font>院挂号监测平台&nbsp;(医生端)</a> <!-- <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>  -->
 			<span class="logo navbar-slogan f-l mr-10 hidden-xs">Beta2.0</span> 
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">
@@ -80,11 +80,11 @@
 			<dt><i class="Hui-iconfont">&#xe616;</i> 挂号管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="order-list" data-title="挂号情况" href="javascript:void(0)">挂号情况</a></li>
+					<li><a data-href="d-order-list" data-title="挂号情况" href="javascript:void(0)">挂号情况</a></li>
 			</ul>
 		</dd>
 	</dl>
-	<dl id="menu-article">
+	<!-- <dl id="menu-article">
 			<dt><i class="Hui-iconfont">&#xe67f;</i> 科室管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
@@ -97,33 +97,33 @@
 			<dd>
 				<ul>
 					<li><a data-href="findDoctor" data-title="医生管理" href="javascript:void(0)">医生管理</a></li>
-					<!-- <li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-					<li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li> -->
+					<li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 			</ul>
 		</dd>
-	</dl>
+	</dl> -->
 	<dl id="menu-article">
 			<dt><i class="Hui-iconfont">&#xe616;</i> 出诊管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="chuzhen-list" data-title="出诊情况" href="javascript:void(0)">出诊情况</a></li>
+					<li><a data-href="d-chuzhen" data-title="出诊情况" href="javascript:void(0)">出诊情况</a></li>
 			</ul>
 		</dd>
 	</dl>
-	<dl id="menu-member">
+	<!-- <dl id="menu-member">
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<li><a data-href="pinfo" data-title="会员列表" href="javascript:;">会员列表</a></li>
-					<!-- <li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
+					<li><a data-href="member-del.html" data-title="删除的会员" href="javascript:;">删除的会员</a></li>
 					<li><a data-href="member-level.html" data-title="等级管理" href="javascript:;">等级管理</a></li>
 					<li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a></li>
 					<li><a data-href="member-record-browse.html" data-title="浏览记录" href="javascript:void(0)">浏览记录</a></li>
 					<li><a data-href="member-record-download.html" data-title="下载记录" href="javascript:void(0)">下载记录</a></li>
-					<li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a></li> -->
+					<li><a data-href="member-record-share.html" data-title="分享记录" href="javascript:void(0)">分享记录</a></li>
 			</ul>
 		</dd>
-	</dl>
+	</dl> -->
 		
 		<!-- <dl id="menu-picture">
 			<dt><i class="Hui-iconfont">&#xe613;</i> 图片管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
@@ -171,8 +171,8 @@
 			<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="news-list" data-title="新闻资讯" href="javascript:void(0)">新闻资讯</a></li>
-					<li><a data-href="add-news-ui" data-title="添加资讯" href="javascript:void(0)">添加资讯</a></li>
+					<li><a data-href="d-about" data-title="个人信息" href="javascript:void(0)">个人信息</a></li>
+					<!-- <li><a data-href="add-news-ui" data-title="添加资讯" href="javascript:void(0)">添加资讯</a></li> -->
 					<!-- <li><a data-href="system-data.html" data-title="数据字典" href="javascript:void(0)">数据字典</a></li>
 					<li><a data-href="system-shielding.html" data-title="屏蔽词" href="javascript:void(0)">屏蔽词</a></li>
 					<li><a data-href="system-log.html" data-title="系统日志" href="javascript:void(0)">系统日志</a></li> -->

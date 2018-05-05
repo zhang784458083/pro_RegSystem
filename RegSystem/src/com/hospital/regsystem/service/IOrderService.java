@@ -5,7 +5,6 @@
  */
 package com.hospital.regsystem.service;
 
-import java.util.Date;
 import java.util.List;
 
 import com.hospital.regsystem.pojo.Order;
@@ -15,4 +14,5 @@ public interface IOrderService {
 	public List<Order> selectOrderById(int pid);
 	void insert(String orderid,int pid, int oid,int did,String desc,int state,String regtime, String dateStart, String dateEnd);
 	public List<Order> selectAll();
+	public void update(String orderid, int state, String result);
 }

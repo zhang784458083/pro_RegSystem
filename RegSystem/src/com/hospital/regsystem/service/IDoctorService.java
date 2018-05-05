@@ -14,4 +14,9 @@ public interface IDoctorService {
 	public Doctor selectByDname(String dname,int oid);
 	public List<Doctor> selectAll();
 	public List<Doctor> findDoctorBy(String workid, int oid, String dname, String tel);
+	public int selectCount(int oid);
+	public void adddoctor(String workid, String dname, String dsex, int role, int cost, String username, String username2,String tel, int oid, String place);
+	
+	public Doctor selectBy(String username);
+	
 }

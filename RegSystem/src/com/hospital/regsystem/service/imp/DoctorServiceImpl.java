@@ -35,5 +35,23 @@ public class DoctorServiceImpl implements IDoctorService{
 	public List<Doctor> findDoctorBy(String workid, int oid, String dname, String tel) {
 		return doctorDao.findDoctorBy(workid,oid,dname,tel);
 	}
+	
+	@Override
+	public int selectCount(int oid) {
+		
+		return doctorDao.selectCount(oid);
+	}
+	
+	@Override
+	public void adddoctor(String workid, String dname, String dsex, int role, int cost, String username,
+			String username2, String tel, int oid, String place) {
+		doctorDao.adddoctor(workid, dname, dsex, role, cost, username, username2, tel, oid, place);
+		
+	}
+	@Override
+	public Doctor selectBy(String username) {
+		return doctorDao.selectByname(username);
+	}
+	
 
 }

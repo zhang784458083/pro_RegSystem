@@ -16,5 +16,8 @@ public interface IOfficelistService {
 	public Officelist select(int oid, String dateStart, String dateEnd);
 	public int selectOfficeCanRegAMByDname(int oid, int did, String string, String string2);
 	public int selectOfficeCanRegPMByDname(int oid, int did, String string, String string2);
+	
+	public void updateByVid(int vid, String starttime, String endtime, int canregis, int maxregis);
+	public void add(int oid, int role, int did, String starttime, String endtime, int i, String max, String max2);
 	 
 }

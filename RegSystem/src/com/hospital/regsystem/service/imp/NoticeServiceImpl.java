@@ -22,5 +22,15 @@ public class NoticeServiceImpl implements INoticeService{
 	public List<Notice> selectAll() {
 		return noticeDao.selectAll();
 	}
+	
+	@Override
+	public void add(String title, String content, String author) {
+		 noticeDao.add(title,content,author);
+		
+	}
+	@Override
+	public List<Notice> select() {
+		return noticeDao.select();
+	}
 
 }

@@ -33,25 +33,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="order">
 		insert into orders (orderid,pid,oid,did,descs,state,regtime,runstarttime,runendtime) values (#{orderid},#{pid},#{oid},#{did},#{desc},#{state},#{regtime},#{runstarttime},#{runendtime})
 	</insert>
-	<!-- 
-	<select id="getStu" resultMap="s">
-		select scord,sname,sage from stu where sid=#{sid}
-	</select>
-	<select id="selectStuByNameAndAge" resultMap="s">
-		select scord,sname,sage from stu where  sage>#{sage}
-	</select>
-	模糊查询 
 	
-	<select id="getStuLike" resultMap="s">
-		select scord,sname,sage from stu where sname like '%' #{sname} '%'
-		select scord,sname,sage from stu where sname like concat('%', #{sname} ,'%')
-	</select>
-	插入数据
-	<insert id="insertStu" parameterType="stu">
-		insert into stu (sid,scord,sname,sage) values (#{sid},#{scord},#{sname},#{sage})
-	</insert>
-	修改
-	<update id="updateStu" parameterType="stu">
-		update stu set sname= #{sname} where sid= #{sid}
-	</update> -->
+	<update id="update" parameterType="order">
+		update orders set state= #{state},result=#{result} ,finshtime=now() where orderid= #{orderid}
+	</update> 
 </mapper>

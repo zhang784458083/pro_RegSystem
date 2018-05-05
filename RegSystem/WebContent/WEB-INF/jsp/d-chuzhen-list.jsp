@@ -22,78 +22,62 @@
 <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
-<title>挂号管理</title>
+<title>出诊管理</title>
 </head>
 <body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>挂号管理 <span class="c-gray en">&gt;</span> 订单列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>出诊管理 <span class="c-gray en">&gt;</span> 出诊情况 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-<form class="form form-horizontal" action="${pageContext.request.contextPath}/findO" method="post">
-	<div class="text-c">下单时间：
+<form class="form form-horizontal" action="${pageContext.request.contextPath}/d-chuzhen-by" method="post">
+	<div class="text-c">出诊时间：
 		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" name="datemax" id="datemin"class="input-text Wdate" style="width:120px;">
 		-
 		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" name="datemin" id="datemax"class="input-text Wdate" style="width:120px;">
 	
-		<input type="text" class="input-text" style="width:150px" placeholder="输入订单号" id="" name="orderid">
-		<input type="text" class="input-text" style="width:100px" placeholder="输入医生" id="" name="dname">
+		<!-- <input type="text" class="input-text" style="width:100px" placeholder="输入医生" id="" name="dname">
 		<select name="oid" class="select" style="width:100px" size="1">
 			<option value="">选择科室</option>
 			<option value="1">眼科</option>
 			<option value="2">骨科</option>
 			<option value="3">儿科</option>
 			<option value="4">外科</option>
-		</select>
-		<select name="state" class="select" style="width:100px" size="1">
-			<option value="">选择状态</option>
-			<option value="1">待诊断</option>
-			<option value="2">已诊断</option>
-			
-		</select>
-		
-		
+		</select> -->
 		<button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜订单</button>
 	</div>
 	 </form>
 	<!-- <div class="cl pd-5 bg-1 bk-gray mt-20">  <span class="r"></span> </div> -->
-	<!-- <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" data-title="添加资讯" data-href="article-add.html" onclick="Hui_admin_tab(this)" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加科室</a></span> </div> -->
+<!-- 	<div class="cl pd-5 bg-1 bk-gray mt-20">  <a class="btn btn-primary radius" data-title="安排出诊" data-href="addChuzhenUI" onclick="Hui_admin_tab(this)" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加安排</a></span> </div> -->
 	<div class="mt-20">
 	<table class="table table-border table-bordered table-hover table-bg table-sort">
 		<thead>
 			<tr class="text-c">
-				<!-- <th width="25"><input type="checkbox" name="" value=""></th> -->
-				<th width="12%">流水号</th>
 				<th width="5%">科室</th>
 				<th width="5%">医生</th>
-				<th width="5%">病人</th>
-				<th width="10%">病情</th>
-				<th width="14%">挂号时间</th>
+				<th width="5%">角色</th>
 				<th width="14%">诊断开始时间</th>
 				<th width="14%">诊断结束时间</th>
-				<th width="6%">订单状态</th> 
-				<th width="14%">完成时间</th> 
+				<th width="6%">最大人数</th> 
+				<th width="6%">可预约人数</th> 
+				<!-- <th width="6%">操作</th> -->
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${list}" var="n" >
 			
 			<tr class="text-c">
-				<td>${n.orderid }</td>
 				<td>${n.oname}</td>
 				<td >${n.dname}</td>
-				<td >${n.pname}</td>
-				<td >${n.descs}</td>
-				<td >${n.regtime}</td>
-				<td >${n.runstarttime}</td>
-				<td >${n.runendtime}</td>
-				<c:if test="${n.state==1}">
-					<td style="color: red">待诊断</td>
+				<c:if test="${n.role==1}">
+					<td >普通医生</td>
 				</c:if>
-				<c:if test="${n.state==2}">
-					<td >已诊断</td>
+				<c:if test="${n.role==2}">
+					<td >专家</td>
 				</c:if>
-				<td >${n.finshtime}</td>
-				<!-- <td class="td-status"><span class="label label-success radius">已启用</span></td>
-				<td class="td-manage"><a style="text-decoration:none" onClick="member_stop(this,'10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password('修改密码','change-password.html','10001','600','270')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>  -->
-				<!-- <td><a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a><a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a></td> -->
+			
+				<td >${n.starttime}</td>
+				<td >${n.endtime}</td>
+				<td >${n.maxregis}</td>
+				<td >${n.canregis}</td>
+				<%-- <td><a title="编辑" href="javascript:;" onclick="member_edit('编辑','edit-chuzhen?vid=${n.vid}','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a></td> --%>
 			</tr> 
 			</c:forEach>
 			
@@ -108,7 +92,7 @@
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker2.js"></script> 
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">

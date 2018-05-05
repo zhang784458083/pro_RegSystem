@@ -45,6 +45,21 @@ public class OfficeServiceImpl implements IOfficeService{
 		this.officeDao = officeDao;
 	}
 
+	@Override
+	public void add(String oname, String desc) {
+		officeDao.add(oname,desc);
+		
+	}
+
+	@Override
+	public List<Office> findOfficeBy(int did, String dname) {
+		return officeDao.findOfficeBy(did,dname);
+	}
+	@Override
+	public void update(Integer oid, String odesc) {
+		 officeDao.updateoffice(oid,odesc);
+	}
+
 	
 
 }

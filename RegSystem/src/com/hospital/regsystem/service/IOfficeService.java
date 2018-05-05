@@ -14,4 +14,9 @@ public interface IOfficeService {
 	public Office selectOfficeById(int officeid);
 	public Office selectOfficeByOname(String oname);
 	public List<Office> selectAll();
+	
+	public void add(String oname, String desc);
+	
+	List<Office> findOfficeBy(int did, String dname);
+	public void update(Integer oid, String odesc);
 }

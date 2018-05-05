@@ -27,21 +27,14 @@
 <body>
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>挂号管理 <span class="c-gray en">&gt;</span> 订单列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
-<form class="form form-horizontal" action="${pageContext.request.contextPath}/findO" method="post">
-	<div class="text-c">下单时间：
+<form class="form form-horizontal" action="${pageContext.request.contextPath}/dfindOBy" method="post">
+	<div class="text-c">诊断时间：
 		<input type="text" onfocus="WdatePicker({ maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}' })" name="datemax" id="datemin"class="input-text Wdate" style="width:120px;">
 		-
 		<input type="text" onfocus="WdatePicker({ minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d' })" name="datemin" id="datemax"class="input-text Wdate" style="width:120px;">
 	
 		<input type="text" class="input-text" style="width:150px" placeholder="输入订单号" id="" name="orderid">
-		<input type="text" class="input-text" style="width:100px" placeholder="输入医生" id="" name="dname">
-		<select name="oid" class="select" style="width:100px" size="1">
-			<option value="">选择科室</option>
-			<option value="1">眼科</option>
-			<option value="2">骨科</option>
-			<option value="3">儿科</option>
-			<option value="4">外科</option>
-		</select>
+		
 		<select name="state" class="select" style="width:100px" size="1">
 			<option value="">选择状态</option>
 			<option value="1">待诊断</option>
@@ -85,15 +78,12 @@
 				<td >${n.runstarttime}</td>
 				<td >${n.runendtime}</td>
 				<c:if test="${n.state==1}">
-					<td style="color: red">待诊断</td>
+					<td ><a title="编辑" href="${pageContext.request.contextPath}/dEditOrderUi?orderid=${n.orderid}" style="color: red">待诊断</a></td>
 				</c:if>
 				<c:if test="${n.state==2}">
 					<td >已诊断</td>
 				</c:if>
 				<td >${n.finshtime}</td>
-				<!-- <td class="td-status"><span class="label label-success radius">已启用</span></td>
-				<td class="td-manage"><a style="text-decoration:none" onClick="member_stop(this,'10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password('修改密码','change-password.html','10001','600','270')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>  -->
-				<!-- <td><a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a><a title="编辑" href="javascript:;" onclick="member_edit('编辑','member-add.html','4','','510')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a></td> -->
 			</tr> 
 			</c:forEach>
 			
@@ -108,7 +98,7 @@
 <script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker2.js"></script> 
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 <script type="text/javascript">

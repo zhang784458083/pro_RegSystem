@@ -15,5 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAll" resultMap="n">
 		select * from notice order by date desc limit 4
 	</select>
-	
+	<insert id="add">
+		insert into notice (title,content,author,date) values (#{title},#{content},#{author},now())
+	</insert>
+	<select id="select" resultMap="n">
+		select * from notice order by date desc 
+	</select>
 </mapper>

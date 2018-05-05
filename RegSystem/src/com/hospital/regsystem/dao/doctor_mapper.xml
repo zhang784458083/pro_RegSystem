@@ -27,6 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectByDname" resultMap="d">
 		select * from doctor where dname=#{dname} and oid=#{oid}
 	</select>
+	<select id="selectByname" resultMap="d">
+		select * from doctor where username=#{username}
+	</select>
 	<!-- 多条件选择 -->
 	<select id="findDoctorBy" resultMap="d">
 		select * from doctor where 1=1
@@ -43,10 +46,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           and  tel=#{tel} 
          </if> 
 	</select>
-	<!-- 插入数据  用户注册 -->
-	<!-- <insert id="reg" parameterType="patient">
-		insert into patient (pname,sex,birthday,pdesc,idNumber,tel,userName,email,pwd,regdate,state) values (#{pname},#{sex},#{birthday},#{pdesc},#{idNumber},#{tel},#{userName},#{email},#{pwd},#{regdate},#{state})
-	</insert> -->
+	<select id="selectCount"  resultType="java.lang.Integer">
+		select count(*) from doctor where oid=#{oid}
+	</select>
+	<!-- 插入数据-->
+	
+	<insert id="adddoctor" parameterType="doctor">
+		insert into doctor (workid,dname,dsex,role,cost,username,password,tel,oid,place) values (#{workid},#{dname},#{dsex},#{role},#{cost},#{username},#{username},#{tel},#{oid},#{place})
+	</insert>
 	<!-- 核对用户名 -->
 	<!-- <select id="checkUser" resultMap="s">
 		select * from patient where userName=#{userName}

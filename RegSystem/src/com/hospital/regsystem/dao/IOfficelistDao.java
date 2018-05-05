@@ -18,4 +18,6 @@ public interface IOfficelistDao {
 	public Officelist select(@Param("oid")int oid, @Param("starttime")String dateStart,@Param("endtime") String dateEnd);
 	public int selectOfficeCanRegAMByDname(@Param("oid")int oid, @Param("did")int did, @Param("string")String string, @Param("string2")String string2);
 	public int selectOfficeCanRegPMByDname(@Param("oid")int oid, @Param("did")int did, @Param("string")String string, @Param("string2")String string2);
+	public void updateByVid(@Param("vid")int vid,@Param("starttime") String starttime,@Param("endtime") String endtime, @Param("canregis")int canregis, @Param("maxregis")int maxregis);
+	public void addVit(@Param("oid")int oid, @Param("role")int role, @Param("did")int did, @Param("starttime")String starttime, @Param("endtime")String endtime, @Param("i")int i, @Param("max")String max, @Param("max")String max2);
 }

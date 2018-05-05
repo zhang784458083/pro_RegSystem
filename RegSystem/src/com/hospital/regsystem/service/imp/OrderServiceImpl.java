@@ -40,8 +40,12 @@ public class OrderServiceImpl implements IOrderService{
 	
 	@Override
 	public List<Order> selectAll() {
-		// TODO Auto-generated method stub
 		return orderDao.selectAll();
+	}
+
+	@Override
+	public void update(String orderid, int state, String result) {
+		orderDao.update(orderid,state,result);
 	}
 
 }

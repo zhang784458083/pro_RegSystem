@@ -15,6 +15,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.hospital.regsystem.pojo.Order" alias="order"/>
 		<typeAlias type="com.hospital.regsystem.pojo.Doctor" alias="doctor"/>
 		<typeAlias type="com.hospital.regsystem.pojo.Notice" alias="notice"/>
+		<typeAlias type="com.hospital.regsystem.pojo.ReturnObj" alias="returnobj"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Chuzhen" alias="chuzhen"/>
 	</typeAliases>
 	
 	<mappers>
@@ -25,5 +27,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/hospital/regsystem/dao/order_mapper.xml" />
 		<mapper resource="com/hospital/regsystem/dao/doctor_mapper.xml" />
 		<mapper resource="com/hospital/regsystem/dao/notice_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/returnobj_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/chuzhen_mapper.xml" />
 	</mappers>
 </configuration>
