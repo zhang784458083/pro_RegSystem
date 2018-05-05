@@ -19,14 +19,11 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.alibaba.fastjson.parser.deserializer.StringFieldDeserializer;
 import com.hospital.regsystem.pojo.Chuzhen;
 import com.hospital.regsystem.pojo.Doctor;
-import com.hospital.regsystem.pojo.Manager;
 import com.hospital.regsystem.pojo.Notice;
 import com.hospital.regsystem.pojo.Office;
 import com.hospital.regsystem.pojo.Officelist;
-import com.hospital.regsystem.pojo.Order;
 import com.hospital.regsystem.pojo.Patient;
 import com.hospital.regsystem.pojo.ReturnObj;
 import com.hospital.regsystem.service.IChuzhenService;

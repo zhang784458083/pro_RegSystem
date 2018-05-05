@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hospital.regsystem.message.Config;
 import com.hospital.regsystem.message.HttpUtil;
-import com.hospital.regsystem.message.IndustrySMS;
 import com.hospital.regsystem.pojo.Doctor;
 import com.hospital.regsystem.pojo.EntityOrder;
 import com.hospital.regsystem.pojo.Notice;
@@ -33,7 +32,6 @@ import com.hospital.regsystem.pojo.Office;
 import com.hospital.regsystem.pojo.Order;
 import com.hospital.regsystem.pojo.Patient;
 import com.hospital.regsystem.service.IDoctorService;
-import com.hospital.regsystem.service.IManagerService;
 import com.hospital.regsystem.service.INoticeService;
 import com.hospital.regsystem.service.IOfficeService;
 import com.hospital.regsystem.service.IOrderService;

@@ -14,7 +14,6 @@ import com.hospital.regsystem.pojo.Patient;
 import com.hospital.regsystem.service.IDoctorService;
 import com.hospital.regsystem.service.IOfficeService;
 import com.hospital.regsystem.service.IOfficelistService;
-import com.hospital.regsystem.service.IPatientService;
 import com.hospital.regsystem.utils.DateUtils;
 import com.hospital.regsystem.utils.IPUtils;
 

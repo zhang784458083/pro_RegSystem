@@ -6,8 +6,6 @@
 package com.hospital.regsystem.controller;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
