@@ -157,7 +157,7 @@ public class PatientController {
 			if(order.getState()==1){
 				entityOrder.setState("已预约");
 			}else if(order.getState()==2){
-				entityOrder.setState("进行中");
+				entityOrder.setState("已诊断");
 			}else if(order.getState()==3){
 				entityOrder.setState("已完成");
 			}else{
