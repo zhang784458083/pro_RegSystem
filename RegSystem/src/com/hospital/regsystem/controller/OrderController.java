@@ -64,11 +64,11 @@ public class OrderController {
 		try {
 			Date d=s1.parse(date);
 			String string=s2.format(d);
-			if(per.equals("上午")){
+			if(per.equals("AM")){
 				startTime=string+" 08:00:00";
 				endTime=string+" 12:00:00";
 			}
-			if(per.equals("下午")){
+			if(per.equals("PM")){
 				startTime=string+" 14:00:00";
 				endTime=string+" 18:00:00";
 			}
@@ -90,11 +90,11 @@ public class OrderController {
 		try {
 			Date d1 = s1.parse(date);
 			String string = s2.format(d1);
-			if (per.equals("上午")) {
+			if (per.equals("AM")) {
 				startTime = string + " 08:00:00";
 				endTime = string + " 12:00:00";
 			}
-			if (per.equals("下午")) {
+			if (per.equals("PM")) {
 				startTime = string + " 14:00:00";
 				endTime = string + " 18:00:00";
 			}
