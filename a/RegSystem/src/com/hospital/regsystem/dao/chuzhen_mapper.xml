@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IChuzhenDao">
+	<!-- 查询所有信息 -->
+	<select id="select" resultType="chuzhen">
+		select of.vid,o.oname,d.dname,d.role,of.starttime,of.endtime,of.maxregis,of.canregis from office o,doctor d,officelist of where  o.oid=of.oid and d.did=of.did
+	</select>
+	
+	<!-- 条件查询 -->
+	<select id="findChuzhen" resultType="chuzhen">
+		select of.vid,o.oname,d.dname,d.role,of.starttime,of.endtime,of.maxregis,of.canregis from office o,doctor d,officelist of where  o.oid=of.oid and d.did=of.did and 1=1 
+		
+		 <if test="startime!= ''">
+         and  of.starttime&gt;=#{startime} 
+         </if>
+         <if test="endtime!= ''">
+           and  of.endtime&lt;=#{endtime}
+         </if>
+         <if test="dname!= ''">
+           and d.dname=#{dname} 
+         </if>
+         <if test="oid != ''">
+          and  o.oid=#{oid} 
+         </if> 
+         
+	</select> 
+	<select id="selectByOD" resultType="chuzhen">
+		select of.vid,o.oname,d.dname,d.role,of.starttime,of.endtime,of.maxregis,of.canregis from office o,doctor d,officelist of where  o.oid=of.oid and d.did=of.did and o.oname=#{oname} and d.dname=#{dname} and 1=1 
+		
+		 <if test="starttime!= ''">
+         and  of.starttime&gt;=#{starttime} 
+         </if>
+         <if test="endtime!= ''">
+           and  of.endtime&lt;=#{endtime}
+         </if>
+         
+	</select> 
+	
+	<select id="selectByVid" resultType="chuzhen">
+		select vid,o.oname,d.dname,d.role,of.starttime,of.endtime,of.maxregis,of.canregis from office o,doctor d,officelist of where  o.oid=of.oid and d.did=of.did and vid=#{vid}
+	</select>
+	<select id="selectBy" resultType="chuzhen">
+		select of.vid,o.oname,d.dname,d.role,of.starttime,of.endtime,of.maxregis,of.canregis from office o,doctor d,officelist of where  o.oid=of.oid and d.did=of.did
+		  and o.oname=#{oname} and d.dname=#{dname}
+	</select>
+</mapper>

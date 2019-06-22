@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!-- 读取数据库连接的数据库文件 -->
+	<properties resource="jdbc.properties"></properties>
+	<!-- 映射文件中使用的类起别名 -->
+	<typeAliases>
+		<typeAlias type="com.hospital.regsystem.pojo.Patient" alias="patient"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Manager" alias="manager"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Officelist" alias="officelist"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Office" alias="office"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Order" alias="order"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Doctor" alias="doctor"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Notice" alias="notice"/>
+		<typeAlias type="com.hospital.regsystem.pojo.ReturnObj" alias="returnobj"/>
+		<typeAlias type="com.hospital.regsystem.pojo.Chuzhen" alias="chuzhen"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/hospital/regsystem/dao/patient_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/manager_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/officelist_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/office_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/order_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/doctor_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/notice_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/returnobj_mapper.xml" />
+		<mapper resource="com/hospital/regsystem/dao/chuzhen_mapper.xml" />
+	</mappers>
+</configuration>

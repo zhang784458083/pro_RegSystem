@@ -15,8 +15,8 @@ public class IndustrySMS
 
 	private static String accountSid = Config.ACCOUNT_SID;
 	private static String to = "18235106368";
-	private static String templateid = "224745576";
-
+	private static String templateid = "1228386720";
+	static String msString="老婆，不能租房子，要买新房子住！";
 	/**
 	 * 验证码通知短信
 	 */
@@ -30,7 +30,7 @@ public class IndustrySMS
 	    }
 	    String url = Config.BASE_URL + operation;
 	    String body = "accountSid=" + accountSid + "&to=" + to + "&templateid=" + tmpSmsContent
-	        + HttpUtil.createCommonParam()+"&param=1111";
+	        + HttpUtil.createCommonParam()+"&param="+msString+"";
 
 	    // 提交请求
 	    String result = HttpUtil.post(url, body);

@@ -35,7 +35,6 @@ import com.hospital.regsystem.service.IOrderService;
 import com.hospital.regsystem.service.IPatientService;
 import com.hospital.regsystem.service.IReturnObjService;
 import com.hospital.regsystem.utils.IPUtils;
-import com.sun.crypto.provider.DESKeyFactory;
 
 @Controller
 public class ManagerController {

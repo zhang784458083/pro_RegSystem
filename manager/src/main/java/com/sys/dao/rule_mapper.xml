@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.IRuleDao">
+	<!-- 查询信息 -->
+	
+	 <resultMap type="rule" id="s">
+		<id column="RULE_ID" javaType="_int" property="rule_id"/>
+		<result column="RULE_NAME" javaType="string" property="rule_name"/>
+		<result column="RULE_STATUS" javaType="_int" property="rule_status"/>
+		<result column="RULE_TYPE" javaType="string" property="rule_type"/>
+		<result column="ADD_NUM" javaType="_int" property="add_num"/>
+		<result column="GIVE_NUM" javaType="_int" property="give_num"/>
+		<result column="GOODS_PRIZE" javaType="_int" property="goods_prize"/>
+		<result column="INSERT_USER" javaType="string" property="insert_user"/>
+		<result column="INSERT_TIME" javaType="string" property="insert_time"/>
+	</resultMap> 
+	<select id="selectOn" resultMap="s">
+		select * from t_rule_info where RULE_STATUS=1  
+		<!-- <if test="rule_name != null">
+         and  RULE_NAME LIKE CONCAT(CONCAT('%', #{rule_name,jdbcType=VARCHAR}), '%')
+         </if> -->
+		<if test="rule_type != null">
+         and  RULE_TYPE = #{rule_type}
+         </if>
+	</select>
+	<select id="selectAll" resultMap="s">
+		select * from t_rule_info where 1=1  
+		<if test="rule_name != null">
+         and  RULE_NAME LIKE CONCAT(CONCAT('%', #{rule_name,jdbcType=VARCHAR}), '%')
+         </if>
+		<if test="rule_type != null">
+         and  RULE_TYPE = #{rule_type}
+         </if>
+	</select>
+	<select id="selectOne" resultMap="s">
+		select * from t_rule_info where RULE_ID=#{rule_id} 
+	</select>
+	<update id="update" parameterType="rule">
+		update t_rule_info set RULE_NAME= #{rule_name},RULE_STATUS= #{rule_status},ADD_NUM=#{add_num},GIVE_NUM=#{give_num},GOODS_PRIZE=#{goods_prize}  where RULE_ID= #{rule_id}
+	</update>
+	 <delete id="delete" parameterType="rule">
+		delete from t_rule_info where RULE_ID=#{rule_id}
+	</delete> 
+	<insert id="insert" parameterType="rule">
+		insert into t_rule_info (RULE_NAME,RULE_STATUS,RULE_TYPE,ADD_NUM,GIVE_NUM,GOODS_PRIZE,INSERT_USER,INSERT_TIME) values (#{rule_name},#{rule_status},#{rule_type},#{add_num},#{give_num},#{goods_prize},#{insert_user},#{insert_time})
+	</insert>
+	
+</mapper>

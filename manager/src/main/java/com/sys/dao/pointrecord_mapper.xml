@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.IPointrecordDao">
+	<!-- 查询信息 -->
+	
+	 <resultMap type="pointrecord" id="s">
+		<id column="RECORD_ID" javaType="_int" property="record_id"/>
+		<result column="SERVICE_TIME" javaType="string" property="service_time"/>
+		<result column="RECORD_NAME" javaType="string" property="record_name"/>
+		<result column="USER_NAME" javaType="string" property="user_name"/>
+		<result column="USER_TELE" javaType="string" property="user_tele"/>
+		<result column="USER_OLD" javaType="_int" property="user_old"/>
+		<result column="USER_NEW" javaType="_int" property="user_new"/>
+		<result column="USER_NUM" javaType="_int" property="user_num"/>
+		<result column="MANAGER" javaType="string" property="manager"/>
+		<result column="CONTENT" javaType="string" property="content"/>
+	</resultMap> 
+	<select id="selectBy" resultMap="s">
+		select * from t_point_record where 1=1 
+		<if test="max!= null">
+         and  SERVICE_TIME&gt;=#{max} 
+         </if>
+         <if test="min!= null">
+         and  SERVICE_TIME&lt;=#{min} 
+         </if>
+		<if test="user_name != null">
+         and  USER_NAME LIKE CONCAT(CONCAT('%', #{user_name,jdbcType=VARCHAR}), '%')
+         </if>
+		<if test="user_tele != null">
+         and  USER_TELE = #{user_tele}
+         </if>
+	</select>
+	<insert id="insert" parameterType="pointrecord">
+		insert into t_point_record (SERVICE_TIME,RECORD_NAME,USER_NAME,USER_TELE,USER_OLD,USER_NEW,USER_NUM,MANAGER,CONTENT) values (#{service_time},#{record_name},#{user_name},#{user_tele},#{user_old},#{user_new},#{user_num},#{manager},#{content})
+	</insert>
+	
+</mapper>

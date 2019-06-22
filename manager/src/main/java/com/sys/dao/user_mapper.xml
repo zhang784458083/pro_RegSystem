@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.IUserDao">
+	<!-- 查询信息 -->
+	
+	 <resultMap type="user" id="s">
+		<id column="USER_ID" javaType="_int" property="user_id"/>
+		<result column="USER_NAME" javaType="string" property="user_name"/>
+		<result column="USER_TELE" javaType="string" property="user_tele"/>
+		<result column="ENTER_ID" javaType="int" property="enter_id"/>
+		<result column="SERVICE_TIME" javaType="string" property="service_time"/>
+		<result column="USER_LEVEL" javaType="string" property="user_level"/>
+		<result column="USER_INTERGAL" javaType="_int" property="user_intergal"/>
+		<result column="USER_SUM" javaType="_int" property="user_sum"/>
+		
+		<result column="S1" javaType="string" property="s1"/>
+		<result column="I1" javaType="_int" property="i1"/>
+	</resultMap> 
+	<select id="select" resultMap="s">
+		select * from t_custo_user where ENTER_ID=#{enter_id} 
+		<if test="tele != null">
+         and  USER_TELE=#{tele} 
+         </if>
+		<if test="name != null">
+         and  USER_NAME LIKE CONCAT(CONCAT('%', #{name,jdbcType=VARCHAR}), '%')
+         </if>
+	</select>
+	<select id="selectOne" resultMap="s">
+		select * from t_custo_user where USER_ID=#{id} 
+	</select>
+	<update id="update" parameterType="user">
+		update t_custo_user set USER_NAME= #{user_name},USER_TELE= #{user_tele},ENTER_ID=#{enter_id},USER_LEVEL=#{user_level},USER_INTERGAL=#{user_intergal},S1=#{s1},I1=#{i1},USER_SUM= #{user_sum}  where USER_ID= #{user_id}
+	</update>
+	 <delete id="delete" parameterType="user">
+		delete from t_custo_user where USER_ID=#{id}
+	</delete> 
+	<insert id="insert" parameterType="user">
+		insert into t_custo_user (USER_NAME,USER_TELE,ENTER_ID,SERVICE_TIME,USER_LEVEL,USER_INTERGAL,USER_SUM,S1,I1) values (#{user_name},#{user_tele},#{enter_id},#{service_time},#{user_level},#{user_intergal},#{user_sum},#{s1},#{i1})
+	</insert>
+	
+</mapper>

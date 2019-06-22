@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sys.dao.IManagerDao">
+	<!-- 查询信息 -->
+	
+	 <resultMap type="manager" id="s">
+		<id column="id" javaType="_int" property="id"/>
+		<result column="enter_id" javaType="_int" property="enter_id"/>
+		<result column="username" javaType="string" property="username"/>
+		<result column="password" javaType="string" property="password"/>
+		<result column="name" javaType="string" property="name"/>
+		<result column="tele" javaType="string" property="tele"/>
+		<result column="type" javaType="_int" property="type"/>
+		<result column="s1" javaType="string" property="s1"/>
+		<result column="s2" javaType="string" property="s2"/>
+	</resultMap> 
+	<select id="find1" resultMap="s">
+		select * from t_manager where username=#{username}
+	</select>
+	<update id="resetpassword" parameterType="manager">
+		update t_manager set password= #{password} where username= #{username}
+	</update>
+	<!-- 
+	<select id="getStu" resultMap="s">
+		select scord,sname,sage from stu where sid=#{sid}
+	</select>
+	<select id="selectStuByNameAndAge" resultMap="s">
+		select scord,sname,sage from stu where  sage>#{sage}
+	</select>
+	模糊查询 
+	<select id="getStuLike" resultMap="s">
+		select scord,sname,sage from stu where sname like '%' #{sname} '%'
+		select scord,sname,sage from stu where sname like concat('%', #{sname} ,'%')
+	</select>
+	插入数据
+	<insert id="insertStu" parameterType="stu">
+		insert into stu (sid,scord,sname,sage) values (#{sid},#{scord},#{sname},#{sage})
+	</insert>
+	修改
+	<update id="updateStu" parameterType="stu">
+		update stu set sname= #{sname} where sid= #{sid}
+	</update> -->
+</mapper>

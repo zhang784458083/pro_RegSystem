@@ -154,6 +154,7 @@
 <script type="text/javascript" src="lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
 <script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
 <script type="text/javascript">
+
 $(function () {
     Highcharts.chart('container', {
         title: {

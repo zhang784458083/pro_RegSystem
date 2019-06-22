@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IOrderDao">
+	<!-- 查询所有用户信息 -->
+	 <resultMap type="order" id="o">
+		<id column="rid" javaType="_int" property="rid"/>
+		<result column="orderid" javaType="string" property="orderid"/>
+		<result column="pid" javaType="_int" property="pid"/>
+		<result column="oid" javaType="_int" property="oid"/>
+		<result column="did" javaType="_int" property="did"/>
+		<result column="descs" javaType="string" property="desc"/>
+		<result column="state" javaType="_int" property="state"/>
+		<result column="regtime" javaType="string" property="regtime"/>
+		<result column="canceltime" javaType="string" property="canceltime"/>
+		<result column="finshtime" javaType="string" property="finshtime"/>
+		<result column="result" javaType="string" property="result"/>
+		<result column="runstarttime" javaType="string" property="runstarttime"/>
+		<result column="runendtime" javaType="string" property="runendtime"/>
+		
+	</resultMap> 
+	<select id="selectAll" resultMap="o">
+		select * from orders
+	</select>
+	<select id="selectOrderById" resultMap="o">
+		select * from orders where pid=#{pid}
+	</select>
+	<select id="selectOrder" resultMap="o">
+		select * from orders where pid=#{pid} and runstarttime=#{runstarttime}
+	</select>
+	<!-- 增加订单 -->
+	<insert id="insert" parameterType="order">
+		insert into orders (orderid,pid,oid,did,descs,state,regtime,runstarttime,runendtime) values (#{orderid},#{pid},#{oid},#{did},#{desc},#{state},#{regtime},#{runstarttime},#{runendtime})
+	</insert>
+	
+	<update id="update" parameterType="order">
+		update orders set state= #{state},result=#{result} ,finshtime=now() where orderid= #{orderid}
+	</update> 
+</mapper>

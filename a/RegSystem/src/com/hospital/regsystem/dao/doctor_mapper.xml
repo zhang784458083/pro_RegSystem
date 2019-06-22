@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IDoctorDao">
+	<!-- 查询所有用户信息 -->
+	 <resultMap type="doctor" id="d">
+		<id column="did" javaType="_int" property="did"/>
+		<result column="workid" javaType="string" property="workid"/>
+		<result column="dname" javaType="string" property="dname"/>
+		<result column="dsex" javaType="string" property="dsex"/>
+		<result column="role" javaType="_int" property="role"/>
+		<result column="cost" javaType="_int" property="cost"/>
+		<result column="username" javaType="string" property="username"/>
+		<result column="password" javaType="string" property="password"/>
+		<result column="tel" javaType="string" property="tel"/>
+		<result column="oid" javaType="_int" property="oid"/>
+		<result column="place" javaType="string" property="place"/>	
+		
+	</resultMap> 
+	<select id="selectAll" resultMap="d">
+		select * from doctor 
+	</select>
+	<select id="selectById" resultMap="d">
+		select * from doctor where did=#{did} and oid=#{oid}
+	</select>
+	<select id="selectByDname" resultMap="d">
+		select * from doctor where dname=#{dname} and oid=#{oid}
+	</select>
+	<select id="selectByname" resultMap="d">
+		select * from doctor where username=#{username}
+	</select>
+	<!-- 多条件选择 -->
+	<select id="findDoctorBy" resultMap="d">
+		select * from doctor where 1=1
+		<if test="workid!= ''">
+         and  workid=#{workid} 
+         </if>
+         <if test="oid!= '' and oid!='0'">
+           and  oid=#{oid}
+         </if>
+         <if test="dname != ''">
+           and dname=#{dname} 
+         </if>
+         <if test="tel != ''">
+          and  tel=#{tel} 
+         </if> 
+	</select>
+	<select id="selectCount"  resultType="java.lang.Integer">
+		select count(*) from doctor where oid=#{oid}
+	</select>
+	<!-- 插入数据-->
+	
+	<insert id="adddoctor" parameterType="doctor">
+		insert into doctor (workid,dname,dsex,role,cost,username,password,tel,oid,place) values (#{workid},#{dname},#{dsex},#{role},#{cost},#{username},#{username},#{tel},#{oid},#{place})
+	</insert>
+	<!-- 核对用户名 -->
+	<!-- <select id="checkUser" resultMap="s">
+		select * from patient where userName=#{userName}
+	</select>
+	<update id="updateAccThree" parameterType="patient">
+		update patient set account= account-3 where pid= #{pid}
+	</update> -->
+	<!-- 
+	<select id="getStu" resultMap="s">
+		select scord,sname,sage from stu where sid=#{sid}
+	</select>
+	<select id="selectStuByNameAndAge" resultMap="s">
+		select scord,sname,sage from stu where  sage>#{sage}
+	</select>
+	模糊查询 
+	<select id="getStuLike" resultMap="s">
+		select scord,sname,sage from stu where sname like '%' #{sname} '%'
+		select scord,sname,sage from stu where sname like concat('%', #{sname} ,'%')
+	</select>
+	插入数据
+	<insert id="insertStu" parameterType="stu">
+		insert into stu (sid,scord,sname,sage) values (#{sid},#{scord},#{sname},#{sage})
+	</insert>
+	修改
+	<update id="updateStu" parameterType="stu">
+		update stu set sname= #{sname} where sid= #{sid}
+	</update> -->
+</mapper>

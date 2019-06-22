@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IManagerDao">
+	<!-- 查询所有用户信息 -->
+	 <resultMap type="manager" id="s">
+		<id column="id" javaType="_int" property="id"/>
+		<result column="username" javaType="string" property="username"/>
+		<result column="password" javaType="string" property="password"/>
+		<result column="tele" javaType="string" property="tele"/>
+		<result column="ip" javaType="string" property="ip"/>
+		
+	</resultMap> 
+	<select id="find" resultMap="s">
+		select username,password from manager where username=#{username}
+	</select>
+	<!-- 
+	<select id="getStu" resultMap="s">
+		select scord,sname,sage from stu where sid=#{sid}
+	</select>
+	<select id="selectStuByNameAndAge" resultMap="s">
+		select scord,sname,sage from stu where  sage>#{sage}
+	</select>
+	模糊查询 
+	<select id="getStuLike" resultMap="s">
+		select scord,sname,sage from stu where sname like '%' #{sname} '%'
+		select scord,sname,sage from stu where sname like concat('%', #{sname} ,'%')
+	</select>
+	插入数据
+	<insert id="insertStu" parameterType="stu">
+		insert into stu (sid,scord,sname,sage) values (#{sid},#{scord},#{sname},#{sage})
+	</insert>
+	修改
+	<update id="updateStu" parameterType="stu">
+		update stu set sname= #{sname} where sid= #{sid}
+	</update> -->
+</mapper>

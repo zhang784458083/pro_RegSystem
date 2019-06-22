@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.regsystem.dao.IReturnObjDao">
+	<!-- 查询所有用户信息 -->
+<!-- 	 <resultMap type="returnobj" id="r">
+		<id column="pid" javaType="_int" property="pid" />
+		<result column="pname" javaType="string" property="pname"/>
+		<result column="sex" javaType="string" property="sex"/>
+		<result column="brithday" javaType="string" property="brithday"/>
+		<result column="pdesc" javaType="string" property="pdesc"/>
+		<result column="idNumber" javaType="string" property="idNumber"/>
+		<result column="tel" javaType="string" property="tel"/>
+		<result column="userName" javaType="string" property="userName"/>
+		<result column="email" javaType="string" property="email"/>
+		<result column="pwd" javaType="string" property="pwd"/>	
+		<result column="regdate" javaType="string" property="regdate"/>
+		<result column="state" javaType="string" property="state"/>	
+		<result column="account" javaType="double" property="account"/>		
+	</resultMap> --> 
+	<select id="select" resultType="returnobj">
+		select o.orderid ,of.oname,d.dname,p.pname,o.descs,o.regtime,o.runstarttime,o.runendtime,o.state ,o.finshtime from patient p,orders o,office of,doctor d  where p.pid=o.pid and o.did=d.did and o.oid=of.oid
+	</select>
+	
+	<select id="selectByName" resultType="returnobj">
+		select o.orderid ,of.oname,d.dname,p.pname,o.descs,o.regtime,o.runstarttime,o.runendtime,o.state ,o.finshtime from patient p,orders o,office of,doctor d  where p.pid=o.pid and o.did=d.did and o.oid=of.oid
+		 and of.oname=#{oname} and d.dname=#{dname}
+	</select>
+	<!-- 条件查询 -->
+	<select id="findO" resultType="returnobj">
+		select o.orderid ,of.oname,d.dname,p.pname,o.descs,o.regtime,o.runstarttime,o.runendtime,o.state ,o.finshtime from patient p,orders o,office of,doctor d  where p.pid=o.pid and o.did=d.did and o.oid=of.oid and 1=1
+		 <if test="max!= ''">
+         and  o.regtime&lt;=#{max} 
+         </if>
+         <if test="min!= ''">
+           and  o.regtime&gt;=#{min}
+         </if>
+         <if test="orderid != ''">
+           and o.orderid=#{orderid} 
+         </if>
+         <if test="dname != ''">
+          and  d.dname=#{dname} 
+         </if> 
+         <if test="o != ''">
+          and  o.oid=#{o} 
+         </if> 
+         <if test="s!= ''">
+          and  o.state=#{s} 
+         </if> 
+	</select>
+	
+	<select id="dfindOBy" resultType="returnobj">
+		select o.orderid ,of.oname,d.dname,p.pname,o.descs,o.regtime,o.runstarttime,o.runendtime,o.state ,o.finshtime from patient p,orders o,office of,doctor d  where p.pid=o.pid and o.did=d.did and o.oid=of.oid  and of.oname=#{oname} and d.dname=#{dname} and 1=1
+		 
+	</select>
+	
+	<select id="dfindOByVid" resultType="returnobj">
+		select o.orderid ,of.oname,d.dname,p.pname,o.descs,o.regtime,o.runstarttime,o.runendtime,o.state ,o.finshtime from patient p,orders o,office of,doctor d  where p.pid=o.pid and o.did=d.did and o.oid=of.oid  and o.orderid=#{orderid} 
+		
+	</select>
+</mapper>

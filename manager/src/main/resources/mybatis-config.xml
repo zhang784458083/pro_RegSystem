@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	
+	<!-- 读取数据库连接的数据库文件 -->
+	<properties resource="jdbc.properties"></properties>
+	<!-- 映射文件中使用的类起别名 -->
+	<typeAliases>
+		<typeAlias type="com.sys.pojo.Manager" alias="manager"/>
+		<typeAlias type="com.sys.pojo.User" alias="user"/>
+		<typeAlias type="com.sys.pojo.Rule" alias="rule"/>
+		<typeAlias type="com.sys.pojo.BeerRecord" alias="beerrecord"/>
+		<typeAlias type="com.sys.pojo.PointRecord" alias="pointrecord"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="com/sys/dao/manager_mapper.xml" />
+		<mapper resource="com/sys/dao/user_mapper.xml" />
+		<mapper resource="com/sys/dao/rule_mapper.xml" />
+		<mapper resource="com/sys/dao/beerrecord_mapper.xml" />
+		<mapper resource="com/sys/dao/pointrecord_mapper.xml" />
+	</mappers>
+</configuration>
